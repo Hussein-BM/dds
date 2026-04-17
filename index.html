@@ -3,171 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محول PNG/JPG ↔ DDS (خاص بالألعاب PS4 / PS5)</title>
+    <title>محول DDS PS4 / PS5 - BC7 جاهز</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
-        
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #0f172a, #1e2937);
-            color: #e2e8f0;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .container {
-            max-width: 760px;
-            width: 95%;
-            background: #1e2937;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
-            padding: 40px 30px;
-            text-align: center;
-        }
-        
-        h1 {
-            font-size: 2.3rem;
-            margin-bottom: 8px;
-            background: linear-gradient(to right, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .subtitle {
-            color: #94a3b8;
-            margin-bottom: 25px;
-            font-weight: 500;
-        }
-        
-        .drop-zone {
-            border: 3px dashed #64748b;
-            border-radius: 16px;
-            padding: 60px 20px;
-            margin: 20px 0;
-            transition: all 0.3s ease;
-            background: #334155;
-            cursor: pointer;
-        }
-        
-        .drop-zone:hover, .drop-zone.dragover {
-            border-color: #60a5fa;
-            background: #475569;
-            transform: scale(1.02);
-        }
-        
-        .preview {
-            margin: 20px auto;
-            max-width: 300px;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.3);
-            display: none;
-        }
-        
-        .options {
-            background: #334155;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-            text-align: right;
-        }
-        
-        select, input[type="checkbox"], button {
-            font-family: 'Cairo', sans-serif;
-            padding: 12px 20px;
-            font-size: 1.05rem;
-            border-radius: 10px;
-            margin: 8px 4px;
-        }
-        
-        button {
-            background: linear-gradient(to right, #60a5fa, #a78bfa);
-            color: white;
-            border: none;
-            font-weight: 700;
-            cursor: pointer;
-            padding: 16px 32px;
-            box-shadow: 0 10px 15px -3px rgb(96 165 250);
-        }
-        
-        button:hover {
-            transform: translateY(-3px);
-        }
-        
-        #status {
-            margin-top: 20px;
-            min-height: 30px;
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-        
-        .success { color: #4ade80; }
-        .error { color: #f87171; }
-        
-        .game-note {
-            background: #1e40af;
-            color: #e0f2fe;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 25px 0;
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-        
-        .rights {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px solid #334155;
-            color: #64748b;
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
+        body {font-family: 'Cairo', sans-serif; background: linear-gradient(135deg, #0f172a, #1e2937); color: #e2e8f0; margin:0; padding:0; min-height:100vh; display:flex; align-items:center; justify-content:center;}
+        .container {max-width:760px; width:95%; background:#1e2937; border-radius:20px; box-shadow:0 25px 50px -12px rgb(0 0 0 / 0.4); padding:40px 30px; text-align:center;}
+        h1 {font-size:2.3rem; margin-bottom:8px; background:linear-gradient(to right, #60a5fa, #a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+        .subtitle {color:#94a3b8; margin-bottom:25px; font-weight:500;}
+        .drop-zone {border:3px dashed #64748b; border-radius:16px; padding:60px 20px; margin:20px 0; transition:all 0.3s; background:#334155; cursor:pointer;}
+        .drop-zone:hover, .drop-zone.dragover {border-color:#60a5fa; background:#475569; transform:scale(1.02);}
+        .preview {max-width:300px; border-radius:12px; margin:20px auto; display:none; box-shadow:0 10px 15px -3px rgb(0 0 0 / 0.3);}
+        button {font-family:'Cairo',sans-serif; padding:16px 32px; font-size:1.1rem; border-radius:12px; margin:10px 5px; font-weight:700; cursor:pointer;}
+        .convert-btn {background:linear-gradient(to right, #60a5fa, #a78bfa); color:white; border:none;}
+        .save-btn {background:linear-gradient(to right, #4ade80, #22c55e); color:white; border:none; display:none;}
+        .bc7-btn {background:linear-gradient(to right, #f59e0b, #d97706); color:white; border:none;}
+        #status {margin-top:20px; min-height:30px; font-weight:600; font-size:1.1rem;}
+        .success {color:#4ade80;} .error {color:#f87171;}
+        .note {background:#1e40af; color:#e0f2fe; padding:20px; border-radius:12px; margin:25px 0; font-size:1.05rem; line-height:1.6;}
+        .rights {margin-top:30px; padding-top:20px; border-top:2px solid #334155; color:#64748b; font-size:1.2rem; font-weight:700;}
     </style>
 </head>
 <body>
     <div class="container">
         <h1>محول DDS للألعاب PS4 / PS5</h1>
-        <p class="subtitle">PNG / JPG → DDS + DDS → PNG • مخصص للـ Textures في الألعاب</p>
+        <p class="subtitle">PNG / JPG → DDS • مع خيار BC7</p>
         
         <div id="dropZone" class="drop-zone">
-            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" stroke="#64748b" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
-            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" stroke="#64748b" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
             <h3>اسحب الصورة هنا (PNG / JPG / DDS)</h3>
             <p>أو اضغط للاختيار</p>
-            <input type="file" id="fileInput" accept="image/*,.dds" style="display: none;">
+            <input type="file" id="fileInput" accept="image/*,.dds" style="display:none;">
         </div>
         
         <img id="preview" class="preview" alt="معاينة">
         
-        <div class="options">
+        <div style="background:#334155; padding:20px; border-radius:12px; margin:20px 0; text-align:right;">
             <label>نوع التحويل:</label><br>
             <select id="conversionType">
                 <option value="to-dds">PNG / JPG → DDS (للألعاب)</option>
                 <option value="to-png">DDS → PNG</option>
             </select>
-            
             <div style="margin-top:15px;">
                 <input type="checkbox" id="generateMipmaps" checked>
-                <label for="generateMipmaps">توليد Mipmaps (مهم جداً لـ PS4 / PS5)</label>
+                <label for="generateMipmaps">توليد Mipmaps (مهم جداً لـ PS4/PS5)</label>
             </div>
-            
-            <small style="color:#94a3b8; display:block; margin-top:10px;">
-                • DDS غير مضغوط (RGBA8) • صالح 100% لـ PS4/PS5<br>
-                • Mipmaps تلقائياً لأفضل أداء في الألعاب
-            </small>
         </div>
         
-        <button onclick="startConversion()">تحويل وتحميل الملف الجاهز للعبة</button>
+        <button onclick="convertImage()" class="convert-btn" id="convertBtn">تحويل الصورة</button>
+        <button onclick="downloadConverted()" class="save-btn" id="saveBtn">💾 حفظ وتحميل الملف</button>
+        
+        <!-- زر BC7 الجديد -->
+        <button onclick="openBC7()" class="bc7-btn" id="bc7Btn" style="display:none;">🔥 اضغط BC7 الآن (حجم صغير جداً)</button>
         
         <p id="status"></p>
         
-        <div class="game-note">
-            ✅ هذا المحول ينتج ملف DDS <strong>صالح تماماً</strong> للألعاب (PS4 / PS5 / PC).<br>
-            Mipmaps يتم إضافتها تلقائياً (تحسن الأداء والجودة بشكل كبير).
+        <div class="note">
+            ⚠️ المحول ينتج DDS غير مضغوط + Mipmaps<br>
+            بعد التحويل اضغط على زر <strong>"🔥 اضغط BC7 الآن"</strong> عشان تحصل على حجم صغير (500-700 كيلو) مثل المواقع الحقيقية.
         </div>
         
         <div class="rights">
@@ -180,11 +72,15 @@
         let selectedFile = null;
         let fileName = '';
         let fileExtension = '';
+        let convertedBlob = null;
 
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('fileInput');
         const preview = document.getElementById('preview');
         const status = document.getElementById('status');
+        const convertBtn = document.getElementById('convertBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const bc7Btn = document.getElementById('bc7Btn');
 
         function showStatus(text, type = '') {
             status.textContent = text;
@@ -194,187 +90,142 @@
         // Drag & Drop
         dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
         dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
-        dropZone.addEventListener('drop', e => {
-            e.preventDefault();
-            dropZone.classList.remove('dragover');
-            handleFile(e.dataTransfer.files[0]);
-        });
-
+        dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
         dropZone.addEventListener('click', () => fileInput.click());
-        fileInput.addEventListener('change', () => {
-            if (fileInput.files[0]) handleFile(fileInput.files[0]);
-        });
+        fileInput.addEventListener('change', () => { if (fileInput.files[0]) handleFile(fileInput.files[0]); });
 
         function handleFile(file) {
-            if (!file) return;
             selectedFile = file;
             fileName = file.name.replace(/\.[^/.]+$/, '');
             fileExtension = file.name.split('.').pop().toLowerCase();
-
             showStatus(`✅ تم اختيار: ${file.name}`, 'success');
-
+            convertedBlob = null;
+            saveBtn.style.display = 'none';
+            bc7Btn.style.display = 'none';
             preview.style.display = 'none';
             const url = URL.createObjectURL(file);
-            if (fileExtension === 'dds') {
-                preview.src = url;
-                preview.style.display = 'block';
-            } else {
-                const img = new Image();
-                img.onload = () => { preview.src = url; preview.style.display = 'block'; };
-                img.src = url;
-            }
+            preview.src = url; preview.style.display = 'block';
         }
 
-        async function startConversion() {
-            if (!selectedFile) {
-                showStatus('❌ ارفع ملف أولاً!', 'error');
-                return;
-            }
-
+        async function convertImage() {
+            if (!selectedFile) return showStatus('❌ ارفع ملف أولاً!', 'error');
             const type = document.getElementById('conversionType').value;
             const generateMips = document.getElementById('generateMipmaps').checked;
-
-            showStatus('جاري التحويل للعبة...');
+            convertBtn.disabled = true;
+            showStatus('جاري التحويل...');
 
             try {
-                if (type === 'to-dds') {
-                    if (fileExtension === 'dds') throw new Error('الملف DDS بالفعل!');
-                    const ddsBlob = await convertToDDS(selectedFile, generateMips);
-                    downloadFile(ddsBlob, `${fileName}.dds`);
-                    showStatus('✅ DDS جاهز لـ PS4/PS5!', 'success');
-                } else {
-                    if (fileExtension !== 'dds') throw new Error('يجب أن يكون الملف DDS!');
-                    const pngBlob = await convertDDStoPNG(selectedFile);
-                    downloadFile(pngBlob, `${fileName}.png`);
-                    showStatus('✅ تم التحويل إلى PNG!', 'success');
-                }
+                convertedBlob = type === 'to-dds' 
+                    ? await convertToDDS(selectedFile, generateMips) 
+                    : await convertDDStoPNG(selectedFile);
+                
+                showStatus('✅ تم التحويل بنجاح!', 'success');
+                saveBtn.style.display = 'inline-block';
+                bc7Btn.style.display = 'inline-block';   // يظهر زر BC7
             } catch (err) {
                 showStatus('❌ ' + err.message, 'error');
+            } finally {
+                convertBtn.disabled = false;
             }
         }
 
-        // ====================== PNG/JPG → DDS مع Mipmaps ======================
+        function downloadConverted() {
+            if (!convertedBlob) return;
+            const ext = document.getElementById('conversionType').value === 'to-dds' ? '.dds' : '.png';
+            const url = URL.createObjectURL(convertedBlob);
+            const a = document.createElement('a');
+            a.href = url; a.download = `\( {fileName} \){ext}`; a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function openBC7() {
+            window.open('https://texturecompression.com/dds/encode', '_blank');
+        }
+
+        // ================== الدوال السابقة (DDS + Mipmaps) ==================
         async function convertToDDS(file, generateMipmaps) {
             return new Promise((resolve, reject) => {
                 const img = new Image();
                 img.onload = () => {
-                    let width = img.width;
-                    let height = img.height;
-                    let mipLevels = [];
-
+                    let width = img.width, height = img.height, mipLevels = [];
                     let currentCanvas = document.createElement('canvas');
-                    currentCanvas.width = width;
-                    currentCanvas.height = height;
+                    currentCanvas.width = width; currentCanvas.height = height;
                     let ctx = currentCanvas.getContext('2d');
                     ctx.drawImage(img, 0, 0);
 
                     while (true) {
                         const imageData = ctx.getImageData(0, 0, currentCanvas.width, currentCanvas.height);
                         mipLevels.push(imageData.data);
-
                         if (!generateMipmaps || width <= 1 || height <= 1) break;
-
                         width = Math.max(1, Math.floor(width / 2));
                         height = Math.max(1, Math.floor(height / 2));
-
                         const newCanvas = document.createElement('canvas');
-                        newCanvas.width = width;
-                        newCanvas.height = height;
+                        newCanvas.width = width; newCanvas.height = height;
                         const newCtx = newCanvas.getContext('2d');
                         newCtx.drawImage(currentCanvas, 0, 0, width, height);
-                        currentCanvas = newCanvas;
-                        ctx = newCtx;
+                        currentCanvas = newCanvas; ctx = newCtx;
                     }
 
                     const numMips = mipLevels.length;
-
                     const header = new Uint8Array(128);
-                    header.set([0x44, 0x44, 0x53, 0x20], 0);
-                    header.set([124, 0, 0, 0], 4);
+                    header.set([0x44,0x44,0x53,0x20],0);
+                    header.set([124,0,0,0],4);
                     let flags = 0x00000007 | 0x00001000;
                     if (numMips > 1) flags |= 0x00020000;
-                    header.set([flags & 0xFF, (flags >> 8) & 0xFF, (flags >> 16) & 0xFF, (flags >> 24) & 0xFF], 8);
-
-                    const origHeight = img.height;
-                    const origWidth = img.width;
-                    header.set([origHeight & 0xFF, (origHeight >> 8) & 0xFF, (origHeight >> 16) & 0xFF, (origHeight >> 24) & 0xFF], 12);
-                    header.set([origWidth & 0xFF, (origWidth >> 8) & 0xFF, (origWidth >> 16) & 0xFF, (origWidth >> 24) & 0xFF], 16);
-
-                    const pitch = origWidth * 4;
-                    header.set([pitch & 0xFF, (pitch >> 8) & 0xFF, (pitch >> 16) & 0xFF, (pitch >> 24) & 0xFF], 20);
-
-                    header.set([numMips & 0xFF, (numMips >> 8) & 0xFF, 0, 0], 28);
-
-                    header.set([32, 0, 0, 0], 76);
-                    header.set([0x41, 0, 0, 0], 80);
-                    header.set([32, 0, 0, 0], 84);
-                    header.set([0x00, 0x00, 0xFF, 0x00], 88);
-                    header.set([0x00, 0xFF, 0x00, 0x00], 92);
-                    header.set([0xFF, 0x00, 0x00, 0x00], 96);
-                    header.set([0x00, 0x00, 0x00, 0xFF], 100);
-
-                    header.set([0x01, 0, 0, 0], 108);
-                    if (numMips > 1) header.set([0x08 | 0x04, 0, 0, 0], 112);
+                    header.set([flags & 0xFF, (flags>>8)&0xFF, (flags>>16)&0xFF, (flags>>24)&0xFF],8);
+                    const w = img.width, h = img.height;
+                    header.set([h&0xFF,(h>>8)&0xFF,(h>>16)&0xFF,(h>>24)&0xFF],12);
+                    header.set([w&0xFF,(w>>8)&0xFF,(w>>16)&0xFF,(w>>24)&0xFF],16);
+                    const pitch = w * 4;
+                    header.set([pitch&0xFF,(pitch>>8)&0xFF,(pitch>>16)&0xFF,(pitch>>24)&0xFF],20);
+                    header.set([numMips&0xFF,(numMips>>8)&0xFF,0,0],28);
+                    header.set([32,0,0,0],76);
+                    header.set([0x41,0,0,0],80);
+                    header.set([32,0,0,0],84);
+                    header.set([0x00,0x00,0xFF,0x00],88);
+                    header.set([0x00,0xFF,0x00,0x00],92);
+                    header.set([0xFF,0x00,0x00,0x00],96);
+                    header.set([0x00,0x00,0x00,0xFF],100);
+                    header.set([0x01,0,0,0],108);
+                    if (numMips > 1) header.set([0x08|0x04,0,0,0],112);
 
                     let totalSize = 128;
-                    mipLevels.forEach(level => { totalSize += level.length; });
+                    mipLevels.forEach(l => totalSize += l.length);
                     const ddsData = new Uint8Array(totalSize);
-
                     ddsData.set(header, 0);
                     let offset = 128;
-                    mipLevels.forEach(level => {
-                        ddsData.set(level, offset);
-                        offset += level.length;
-                    });
+                    mipLevels.forEach(l => { ddsData.set(l, offset); offset += l.length; });
 
-                    const blob = new Blob([ddsData], { type: 'image/vnd-ms.dds' });
-                    resolve(blob);
+                    resolve(new Blob([ddsData], {type: 'image/vnd-ms.dds'}));
                 };
                 img.onerror = () => reject(new Error('فشل تحميل الصورة'));
                 img.src = URL.createObjectURL(file);
             });
         }
 
-        // ====================== DDS → PNG ======================
         async function convertDDStoPNG(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = e => {
                     const bytes = new Uint8Array(e.target.result);
                     if (bytes[0] !== 0x44 || bytes[1] !== 0x44 || bytes[2] !== 0x53 || bytes[3] !== 0x20) {
                         reject(new Error('ملف DDS غير صالح'));
                         return;
                     }
-
                     const width = bytes[16] | (bytes[17]<<8) | (bytes[18]<<16) | (bytes[19]<<24);
                     const height = bytes[12] | (bytes[13]<<8) | (bytes[14]<<16) | (bytes[15]<<24);
-
-                    const pixelData = bytes.slice(128, 128 + width * height * 4);
-
+                    const pixelData = bytes.slice(128, 128 + width*height*4);
                     const canvas = document.createElement('canvas');
-                    canvas.width = width;
-                    canvas.height = height;
+                    canvas.width = width; canvas.height = height;
                     const ctx = canvas.getContext('2d');
-                    const imageData = ctx.createImageData(width, height);
-                    imageData.data.set(pixelData);
-                    ctx.putImageData(imageData, 0, 0);
-
+                    const imgData = ctx.createImageData(width, height);
+                    imgData.data.set(pixelData);
+                    ctx.putImageData(imgData, 0, 0);
                     canvas.toBlob(blob => resolve(blob), 'image/png', 1);
                 };
                 reader.readAsArrayBuffer(file);
             });
         }
-
-        function downloadFile(blob, filename) {
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename;
-            a.click();
-            URL.revokeObjectURL(url);
-        }
-
-        console.log('%c✅ محول DDS لـ PS4/PS5 جاهز ومضبوط 100% • حقوق PS4 THE WORLD', 'color:#4ade80;font-size:16px;font-weight:bold');
     </script>
 </body>
 </html>
